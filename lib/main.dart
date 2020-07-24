@@ -27,7 +27,7 @@ class JSONTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String json =
-        '{"name": "John Sm22ith", "email": "john@example.com", "created_time": 123123123123}';
+        '{"name": "John Sm22ith", "email": "john@example.com", "created_time": 123123123123, "address": {"street": "Sindaebang", "city": "Seoul"}}';
 
     Map<String, dynamic> userMap = jsonDecode(json);
     //String json을 jsonDecode가 가져와서 Map<String, dynamic>형으로 변환
