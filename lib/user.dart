@@ -9,6 +9,7 @@ part 'user.g.dart';
 class User {
   final String name;
   final String email;
+  @JsonKey(name: 'created_time') //Key 값이 _로 인해 다름을 방지
   final int createdTime;
 
   User(this.name, this.email, this.createdTime);
