@@ -32,10 +32,12 @@ class JSONTest extends StatelessWidget {
 
     var user = User.fromJson(userMap);
 
+    var jsonData = user.toJson();
+
     return Scaffold(
       body: Center(
           child: Text(
-        ' name: ${user.name} \n email: ${user.email} \n created_time: ${user.createdTime} \n',
+        ' name: ${user.name} \n email: ${user.email} \n created_time: ${user.createdTime} \n toJson: $jsonData',
         textScaleFactor: 2,
       )),
     );
