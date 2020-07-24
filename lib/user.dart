@@ -1,3 +1,11 @@
+//1. part 'user.g.dart';를 적는다.
+//2. 터미널에서 flutter pub run build_runner build 해야함.
+
+import 'package:json_annotation/json_annotation.dart';
+
+part 'user.g.dart';
+
+@JsonSerializable()
 class User {
   final String name;
   final String email;
@@ -5,14 +13,7 @@ class User {
 
   User(this.name, this.email, this.createdTime);
 
-  User.fromJson(Map<String, dynamic> json)
-      : name = json['name'],
-        email = json['email'],
-        createdTime = json['created_time'];
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'email': email,
-        'created_time': createdTime,
-      };
+  Map<String, dynamic> toJson() => _$UserToJson(this);
 }
