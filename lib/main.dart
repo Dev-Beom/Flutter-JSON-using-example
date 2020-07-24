@@ -25,17 +25,38 @@ class JSONTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String json =
-        '{"name": "John Smith", "email": "john@example.com", "created_time": 123123123123}';
+        '{"name": "John Sm22ith", "email": "john@example.com", "created_time": 123123123123}';
 
-    Map<String, dynamic> userMap = jsonDecode(
-        json); //String json을 jsonDecode가 가져와서 Map<String, dynamic>형으로 변환
+    Map<String, dynamic> userMap = jsonDecode(json);
+    //String json을 jsonDecode가 가져와서 Map<String, dynamic>형으로 변환
+
+    var user = User.fromJson(userMap);
 
     return Scaffold(
       body: Center(
           child: Text(
-        ' name: ${userMap['name']} \n email: ${userMap['email']} \n created_time: ${userMap['created_time']} \n',
+        ' name: ${user.name} \n email: ${user.email} \n created_time: ${user.createdTime} \n',
         textScaleFactor: 2,
       )),
     );
   }
+}
+
+class User {
+  final String name;
+  final String email;
+  final int createdTime;
+
+  User(this.name, this.email, this.createdTime);
+
+  User.fromJson(Map<String, dynamic> json)
+      : name = json['name'],
+        email = json['email'],
+        createdTime = json['created_time'];
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'email': email,
+        'created_time': createdTime,
+      };
 }
